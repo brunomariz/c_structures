@@ -15,17 +15,13 @@ S_list *create_s_list()
     return list;
 }
 
-typedef struct my_data
+void free_s_list(S_list *list)
 {
-    int x1;
-    float x2;
-    char *x3;
-} My_data;
+    // TODO: implement
+}
 
 void append_s_list(S_list *list, void *data)
 {
-    // S_list_item item = {data, NULL};
-    // S_list_item *new_item = &item;
     S_list_item *new_item = (S_list_item *)malloc(sizeof(*new_item));
     new_item->data = data;
     new_item->next = NULL;
