@@ -22,10 +22,11 @@ int main(int argc, char *argv[])
 {
     S_list *list = create_s_list();
     My_data data_1 = {1, 2.5, "abc"};
-    void *void_ptr = (void *)(&data_1);
-    append_s_list(list, void_ptr);
-    append_s_list(list, void_ptr);
-    append_s_list(list, void_ptr);
+    My_data data_2 = {15, 0.2, "dfg"};
+    My_data data_3 = {0, 4.25, "hij"};
+    append_s_list(list, (void *)(&data_1));
+    append_s_list(list, (void *)(&data_2));
+    append_s_list(list, (void *)(&data_3));
     print_s_list(list, my_print_callback);
 
     return 0;
