@@ -1,7 +1,7 @@
 /**
  * c_structures.c - library for data structures
  */
-#include "../inc/c_structures.h"
+#include "../inc/s_list.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,5 +1,5 @@
-#ifndef _C_STRUCTURES_H
-#define _C_STRUCTURES_H
+#ifndef _S_LIST_H
+#define _S_LIST_H
 
 // Simple linked list
 
@@ -21,5 +21,6 @@ typedef struct S_list
 S_list *create_s_list();
 void append_s_list(S_list *list, void *data);
 void print_s_list(S_list *list, void callback(void *data, int iter));
+// TODO: other simple list methods
 
 #endif
