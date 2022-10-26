@@ -56,3 +56,31 @@ void print_s_list(S_list *list, void callback(void *data, int iter))
         curr = curr->next;
     }
 }
+
+S_list_item *get_item_s_list(S_list *list, int index)
+{
+    /// @brief Get item from lisit at specified index (starts at 0)
+    /// @param list to look through for item
+    /// @param index of item to get
+    /// @return item of list at specified index, NULL if invalid index
+
+    if (list->length > index)
+    {
+        S_list_item *item = list->head;
+        for (int i = 0; i < index; i++)
+        {
+            item = item->next;
+        }
+        return item;
+    }
+    printf("\n\033[0;33m");
+    printf("WARNING: ");
+    printf("\033[0m");
+    printf("Invalid index, returning NULL. Might cause segmentation fault.\n\n");
+    fflush(stdout);
+    return NULL;
+}
+S_list_item *find_item_s_list(S_list *list, void *data)
+{
+    // TODO: Implement
+}

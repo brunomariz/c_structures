@@ -21,6 +21,7 @@ typedef struct S_list
 S_list *create_s_list();
 void append_s_list(S_list *list, void *data);
 void print_s_list(S_list *list, void callback(void *data, int iter));
-// TODO: other simple list methods
+S_list_item *get_item_s_list(S_list *list, int index);
+S_list_item *find_item_s_list(S_list *list, void *data);
 
 #endif

@@ -20,14 +20,26 @@ void my_print_callback(void *data, int iter)
 
 int main(int argc, char *argv[])
 {
+    // List creation
     S_list *list = create_s_list();
+    // Create mock data
     My_data data_1 = {1, 2.5, "abc"};
     My_data data_2 = {15, 0.2, "dfg"};
     My_data data_3 = {0, 4.25, "hij"};
+    // Appending to list
     append_s_list(list, (void *)(&data_1));
     append_s_list(list, (void *)(&data_2));
     append_s_list(list, (void *)(&data_3));
+    // Printing list
     print_s_list(list, my_print_callback);
+    // Getting list item
+    printf("\nGetting list item\n");
+    int index = 0;
+    S_list_item *second_item = get_item_s_list(list, index);
+    if (second_item != NULL)
+        my_print_callback(second_item->data, index);
+    else
+        printf("Item at index %d not found.\n", index);
 
     return 0;
 }
