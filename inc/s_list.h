@@ -19,7 +19,7 @@ typedef struct S_list
 } S_list;
 
 S_list *create_s_list();
-void free_s_list(S_list *list);
+void free_s_list(S_list *list, void callback(void *data));
 void append_s_list(S_list *list, void *data);
 void print_s_list(S_list *list, void callback(void *data, int iter));
 S_list_item *get_item_s_list(S_list *list, int index);

@@ -15,9 +15,26 @@ S_list *create_s_list()
     return list;
 }
 
-void free_s_list(S_list *list)
+void free_s_list(S_list *list, void callback(void *data))
 {
-    // TODO: implement
+    /// @brief Iterates through items on list, and passes data to a
+    ///                 callback that should handle freeing the memory, then
+    ///                 frees the item and list memory. Callback function only
+    ///                 has to deal with freeing the data memory.
+    /// @param list List to free from memory.
+    /// @param callback Function that should handle freeing memory
+    ///                 from each of the lists items data.
+
+    S_list_item *item = list->head;
+    S_list_item *next_item = NULL;
+    for (int i = 0; i < list->length; i++)
+    {
+        next_item = item->next;
+        callback(item->data);
+        free(item);
+        item = next_item;
+    }
+    free(list);
 }
 
 void append_s_list(S_list *list, void *data)
@@ -79,4 +96,5 @@ S_list_item *get_item_s_list(S_list *list, int index)
 S_list_item *find_item_s_list(S_list *list, void *data)
 {
     // TODO: Implement
+    return NULL;
 }

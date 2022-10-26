@@ -13,7 +13,7 @@ typedef struct my_data
     char *x3;
 } My_data;
 
-// Callback for example 1
+// Print callback for example 1
 void my_print_callback(void *data, int iter)
 {
     // Custom print function made specifically for My_data
@@ -23,11 +23,17 @@ void my_print_callback(void *data, int iter)
            my_data->x1, my_data->x2, my_data->x3);
 }
 
-// Callback for example 2
+// Print callback for example 2
 void print_list_callback(void *data, int iter)
 {
     int *array = (int *)data;
     printf("%d:\t[%d, %d]\n", iter, array[0], array[1]);
+}
+
+// Free callback for example 2
+void random_free_callback(void *data)
+{
+    free(data);
 }
 
 int main(int argc, char *argv[])
@@ -94,6 +100,9 @@ int main(int argc, char *argv[])
     int random_list_index = 4;
     S_list_item *random_list_item = get_item_s_list(random_list, random_list_index);
     print_list_callback(random_list_item->data, random_list_index);
+
+    // Free allocated space
+    free_s_list(random_list, random_free_callback);
 
     return 0;
 }
