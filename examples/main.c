@@ -36,6 +36,18 @@ void random_free_callback(void *data)
     free(data);
 }
 
+// Comparison callback for example 2
+int compare_callback(void *data1, void *data2)
+{
+    int *a1 = (int *)data1;
+    int *a2 = (int *)data2;
+    if (a1[0] == a2[0])
+    {
+        return 1;
+    }
+    return 0;
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -100,7 +112,17 @@ int main(int argc, char *argv[])
     int random_list_index = 4;
     S_list_item *random_list_item = get_item_s_list(random_list, random_list_index);
     print_list_callback(random_list_item->data, random_list_index);
-
+    // Find item in list
+    printf("Find item:\n");
+    int compare_item[2] = {1, 0};
+    S_list_item *found_item = find_item_s_list(random_list, compare_item, compare_callback);
+    if (found_item != NULL)
+        print_list_callback(found_item->data, 0);
+    else
+        printf("No match.\n");
+    // Index of item in list
+    int index_of_item = index_of_s_list(random_list, compare_item, compare_callback);
+    printf("Index of: %d\n", index_of_item);
     // Free allocated space
     free_s_list(random_list, random_free_callback);
 

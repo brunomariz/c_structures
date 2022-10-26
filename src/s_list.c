@@ -93,8 +93,45 @@ S_list_item *get_item_s_list(S_list *list, int index)
     fflush(stdout);
     return NULL;
 }
-S_list_item *find_item_s_list(S_list *list, void *data)
+
+S_list_item *find_item_s_list(S_list *list, void *data, int callback(void *data1, void *data2))
 {
-    // TODO: Implement
+    /// @brief Find and item on a list.
+    /// @param list to search for item.
+    /// @param data to compare to each items data on list.
+    /// @param callback function that returns 1 when data1 and data2 should be considered
+    ///                 a match and returns 0 otherwise.
+    /// @return Item that matches according to callback function.
+
+    S_list_item *curr = list->head;
+    for (int i = 0; i < list->length; i++)
+    {
+        if (callback(data, curr->data))
+        {
+            return curr;
+        }
+        curr = curr->next;
+    }
     return NULL;
+}
+
+int index_of_s_list(S_list *list, void *data, int callback(void *data1, void *data2))
+{
+    /// @brief Find the index of an item on the list.
+    /// @param list to look for item.
+    /// @param data to compare to each items data on the list.
+    /// @param callback function that returns 1 when data1 and data2 should be considered
+    ///                 a match and returns 0 otherwise.
+    /// @return index of item or -1 if no match found.
+
+    S_list_item *curr = list->head;
+    for (int i = 0; i < list->length; i++)
+    {
+        if (callback(data, curr->data))
+        {
+            return i;
+        }
+        curr = curr->next;
+    }
+    return -1;
 }

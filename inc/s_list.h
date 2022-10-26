@@ -23,6 +23,7 @@ void free_s_list(S_list *list, void callback(void *data));
 void append_s_list(S_list *list, void *data);
 void print_s_list(S_list *list, void callback(void *data, int iter));
 S_list_item *get_item_s_list(S_list *list, int index);
-S_list_item *find_item_s_list(S_list *list, void *data);
+S_list_item *find_item_s_list(S_list *list, void *data, int callback(void *data1, void *data2));
+int index_of_s_list(S_list *list, void *data, int callback(void *data1, void *data2));
 
 #endif
