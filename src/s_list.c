@@ -135,3 +135,13 @@ int index_of_s_list(S_list *list, void *data, int callback(void *data1, void *da
     }
     return -1;
 }
+
+void for_each_s_list(S_list *list, void callback(void *data, int index))
+{
+    S_list_item *item = list->head;
+    for (int i = 0; i < list->length; i++)
+    {
+        callback(item->data, i);
+        item = item->next;
+    }
+}

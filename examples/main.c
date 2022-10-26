@@ -48,6 +48,34 @@ int compare_callback(void *data1, void *data2)
     return 0;
 }
 
+// "For each" callback for example 2
+void weird_fizz_buzz(void *data, int index)
+{
+    int *a = (int *)data;
+    if (a[0] % 3 == 0 || a[1] % 3 == 0)
+    {
+        if (a[0] % 5 == 0 || a[1] % 5 == 0)
+        {
+            printf("FizzBuzz: [%d, %d]\n", a[0], a[1]);
+        }
+        else
+        {
+            printf("Fizz:     [%d, %d]\n", a[0], a[1]);
+        }
+    }
+    else
+    {
+        if (a[0] % 5 == 0 || a[1] % 5 == 0)
+        {
+            printf("Buzz:     [%d, %d]\n", a[0], a[1]);
+        }
+        else
+        {
+            printf("\t  [%d, %d]\n", a[0], a[1]);
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -67,7 +95,7 @@ int main(int argc, char *argv[])
     // Printing list
     print_s_list(my_list, my_print_callback);
     // Getting list item
-    printf("\nGetting list item\n");
+    printf("=Getting list item\n");
     int index = 0;
     S_list_item *second_item = get_item_s_list(my_list, index);
     if (second_item != NULL)
@@ -105,26 +133,27 @@ int main(int argc, char *argv[])
         append_s_list(random_list, (void *)d);
     }
     // Print list
-    printf("Random list:\n");
+    printf("=Random list:\n");
     print_s_list(random_list, print_list_callback);
     // Get item from list
-    printf("Get item:\n");
+    printf("=Get item:\n");
     int random_list_index = 4;
     S_list_item *random_list_item = get_item_s_list(random_list, random_list_index);
     print_list_callback(random_list_item->data, random_list_index);
-    // Find item in list
-    printf("Find item:\n");
+    // Find item on list
+    printf("=Find item:\n");
     int compare_item[2] = {1, 0};
     S_list_item *found_item = find_item_s_list(random_list, compare_item, compare_callback);
     if (found_item != NULL)
         print_list_callback(found_item->data, 0);
     else
         printf("No match.\n");
-    // Index of item in list
+    // Index of item on list
     int index_of_item = index_of_s_list(random_list, compare_item, compare_callback);
-    printf("Index of: %d\n", index_of_item);
-    // Free allocated space
-    free_s_list(random_list, random_free_callback);
+    printf("=Index of: %d\n", index_of_item);
+    // For each item on list
+    printf("=For each:\n");
+    for_each_s_list(random_list, weird_fizz_buzz);
 
     return 0;
 }

@@ -25,5 +25,6 @@ void print_s_list(S_list *list, void callback(void *data, int iter));
 S_list_item *get_item_s_list(S_list *list, int index);
 S_list_item *find_item_s_list(S_list *list, void *data, int callback(void *data1, void *data2));
 int index_of_s_list(S_list *list, void *data, int callback(void *data1, void *data2));
+void for_each_s_list(S_list *list, void callback(void *data, int index));
 
 #endif
