@@ -10,6 +10,9 @@
 CSSList *c_structures_s_list_create()
 {
     CSSList *list = (CSSList *)malloc(sizeof(*list));
+    list->length = 0;
+    list->head = NULL;
+    list->tail = NULL;
     return list;
 }
 
@@ -143,3 +146,16 @@ void c_structures_s_list_for_each(CSSList *list, void callback(void *data, int i
         item = item->next;
     }
 }
+
+// int *c_structures_s_list_to_int_1_2_array(CSSList *list)
+// {
+//     int *array = malloc(sizeof(int) * list->length * 2);
+//     CSSListItem *item = list->head;
+//     for (int i = 0; i < list->length; i++)
+//     {
+//         array[i * 2 + 0] = ((int *)item->data)[0];
+//         array[i * 2 + 1] = ((int *)item->data)[1];
+//         item = item->next;
+//     }
+//     return array;
+// }
