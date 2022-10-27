@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     printf("\n===Example 1 - struct data===\n");
 
     // List creation
-    S_list *my_list = c_structures_s_list_create();
+    CSSList *my_list = c_structures_s_list_create();
     // Create mock data
     My_data data_1 = {1, 2.5, "abc"};
     My_data data_2 = {15, 0.2, "dfg"};
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
     // Getting list item
     printf("=Getting list item\n");
     int index = 0;
-    S_list_item *second_item = c_structures_s_list_get_item(my_list, index);
+    CSSListItem *second_item = c_structures_s_list_get_item(my_list, index);
     if (second_item != NULL)
         my_print_callback(second_item->data, index);
     else
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
     // ===Example 2 - list of arrays===
     printf("\n===Example 2 - list of arrays===\n");
     // Create list
-    S_list *array_list = c_structures_s_list_create();
+    CSSList *array_list = c_structures_s_list_create();
     // Create data
     int a[2] = {1, 2};
     int b[2] = {3, 4};
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
     c_structures_s_list_print(array_list, print_list_callback);
 
     // Creating random items on for loop
-    S_list *random_list = c_structures_s_list_create();
+    CSSList *random_list = c_structures_s_list_create();
     // Set seed for random number function
     srand(time(NULL));
     for (int i = 0; i < 10; i++)
@@ -138,12 +138,12 @@ int main(int argc, char *argv[])
     // Get item from list
     printf("=Get item:\n");
     int random_list_index = 4;
-    S_list_item *random_list_item = c_structures_s_list_get_item(random_list, random_list_index);
+    CSSListItem *random_list_item = c_structures_s_list_get_item(random_list, random_list_index);
     print_list_callback(random_list_item->data, random_list_index);
     // Find item on list
     printf("=Find item:\n");
     int compare_item[2] = {1, 0};
-    S_list_item *found_item = c_structures_s_list_find_item(random_list, compare_item, compare_callback);
+    CSSListItem *found_item = c_structures_s_list_find_item(random_list, compare_item, compare_callback);
     if (found_item != NULL)
         print_list_callback(found_item->data, 0);
     else
