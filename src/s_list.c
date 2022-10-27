@@ -9,8 +9,6 @@
 
 CSSList *c_structures_s_list_create()
 {
-    // CSSList *list = &(CSSList){NULL, NULL, 0};
-    // CSSList *list = &(CSSList){0, NULL, NULL};
     CSSList *list = (CSSList *)malloc(sizeof(*list));
     return list;
 }
