@@ -9,8 +9,10 @@ CFLAGS := `sdl2-config --libs --cflags` -ggdb3 -O0 --std=c99 -Wall -lSDL2_image 
 # add header files here
 HDRS := inc/c_structures.h 
 
+# define main file
+MAIN := examples/s_list_examples.c
 # add source files here
-SRCS := examples/main.c src/s_list.c src/d_array.c
+SRCS := $(MAIN) src/s_list.c src/d_array.c
 
 # generate names of object files
 OBJS := $(SRCS:.c=.o)
