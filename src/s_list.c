@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-S_list *s_list_create()
+S_list *c_structures_s_list_create()
 {
     // S_list *list = &(S_list){NULL, NULL, 0};
     // S_list *list = &(S_list){0, NULL, NULL};
@@ -15,7 +15,7 @@ S_list *s_list_create()
     return list;
 }
 
-void s_list_free(S_list *list, void callback(void *data))
+void c_structures_s_list_free(S_list *list, void callback(void *data))
 {
     /// @brief Iterates through items on list, and passes data to a
     ///                 callback that should handle freeing the memory, then
@@ -37,7 +37,7 @@ void s_list_free(S_list *list, void callback(void *data))
     free(list);
 }
 
-void s_list_append(S_list *list, void *data)
+void c_structures_s_list_append(S_list *list, void *data)
 {
     S_list_item *new_item = (S_list_item *)malloc(sizeof(*new_item));
     new_item->data = data;
@@ -56,7 +56,7 @@ void s_list_append(S_list *list, void *data)
     list->length++;
 }
 
-void s_list_print(S_list *list, void callback(void *data, int iter))
+void c_structures_s_list_print(S_list *list, void callback(void *data, int iter))
 {
     /// @brief Print function for simple linked lists
     /// @param list to print
@@ -70,7 +70,7 @@ void s_list_print(S_list *list, void callback(void *data, int iter))
     }
 }
 
-S_list_item *s_list_get_item(S_list *list, int index)
+S_list_item *c_structures_s_list_get_item(S_list *list, int index)
 {
     /// @brief Get item from lisit at specified index (starts at 0)
     /// @param list to look through for item
@@ -94,7 +94,7 @@ S_list_item *s_list_get_item(S_list *list, int index)
     return NULL;
 }
 
-S_list_item *s_list_find_item(S_list *list, void *data, int callback(void *data1, void *data2))
+S_list_item *c_structures_s_list_find_item(S_list *list, void *data, int callback(void *data1, void *data2))
 {
     /// @brief Find and item on a list.
     /// @param list to search for item.
@@ -115,7 +115,7 @@ S_list_item *s_list_find_item(S_list *list, void *data, int callback(void *data1
     return NULL;
 }
 
-int s_list_index_of(S_list *list, void *data, int callback(void *data1, void *data2))
+int c_structures_s_list_index_of(S_list *list, void *data, int callback(void *data1, void *data2))
 {
     /// @brief Find the index of an item on the list.
     /// @param list to look for item.
@@ -136,7 +136,7 @@ int s_list_index_of(S_list *list, void *data, int callback(void *data1, void *da
     return -1;
 }
 
-void s_list_for_each(S_list *list, void callback(void *data, int index))
+void c_structures_s_list_for_each(S_list *list, void callback(void *data, int index))
 {
     S_list_item *item = list->head;
     for (int i = 0; i < list->length; i++)

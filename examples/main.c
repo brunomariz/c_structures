@@ -83,21 +83,21 @@ int main(int argc, char *argv[])
     printf("\n===Example 1 - struct data===\n");
 
     // List creation
-    S_list *my_list = s_list_create();
+    S_list *my_list = c_structures_s_list_create();
     // Create mock data
     My_data data_1 = {1, 2.5, "abc"};
     My_data data_2 = {15, 0.2, "dfg"};
     My_data data_3 = {0, 4.25, "hij"};
     // Appending to list
-    s_list_append(my_list, (void *)(&data_1));
-    s_list_append(my_list, (void *)(&data_2));
-    s_list_append(my_list, (void *)(&data_3));
+    c_structures_s_list_append(my_list, (void *)(&data_1));
+    c_structures_s_list_append(my_list, (void *)(&data_2));
+    c_structures_s_list_append(my_list, (void *)(&data_3));
     // Printing list
-    s_list_print(my_list, my_print_callback);
+    c_structures_s_list_print(my_list, my_print_callback);
     // Getting list item
     printf("=Getting list item\n");
     int index = 0;
-    S_list_item *second_item = s_list_get_item(my_list, index);
+    S_list_item *second_item = c_structures_s_list_get_item(my_list, index);
     if (second_item != NULL)
         my_print_callback(second_item->data, index);
     else
@@ -106,20 +106,20 @@ int main(int argc, char *argv[])
     // ===Example 2 - list of arrays===
     printf("\n===Example 2 - list of arrays===\n");
     // Create list
-    S_list *array_list = s_list_create();
+    S_list *array_list = c_structures_s_list_create();
     // Create data
     int a[2] = {1, 2};
     int b[2] = {3, 4};
     int c[2] = {5, 6};
     // Add data to list
-    s_list_append(array_list, (void *)a);
-    s_list_append(array_list, (void *)b);
-    s_list_append(array_list, (void *)c);
+    c_structures_s_list_append(array_list, (void *)a);
+    c_structures_s_list_append(array_list, (void *)b);
+    c_structures_s_list_append(array_list, (void *)c);
     // Print list
-    s_list_print(array_list, print_list_callback);
+    c_structures_s_list_print(array_list, print_list_callback);
 
     // Creating random items on for loop
-    S_list *random_list = s_list_create();
+    S_list *random_list = c_structures_s_list_create();
     // Set seed for random number function
     srand(time(NULL));
     for (int i = 0; i < 10; i++)
@@ -130,33 +130,33 @@ int main(int argc, char *argv[])
         d[0] = rand() % 10;
         d[1] = rand() % 5 + 5;
         // Append to list
-        s_list_append(random_list, (void *)d);
+        c_structures_s_list_append(random_list, (void *)d);
     }
     // Print list
     printf("=Random list:\n");
-    s_list_print(random_list, print_list_callback);
+    c_structures_s_list_print(random_list, print_list_callback);
     // Get item from list
     printf("=Get item:\n");
     int random_list_index = 4;
-    S_list_item *random_list_item = s_list_get_item(random_list, random_list_index);
+    S_list_item *random_list_item = c_structures_s_list_get_item(random_list, random_list_index);
     print_list_callback(random_list_item->data, random_list_index);
     // Find item on list
     printf("=Find item:\n");
     int compare_item[2] = {1, 0};
-    S_list_item *found_item = s_list_find_item(random_list, compare_item, compare_callback);
+    S_list_item *found_item = c_structures_s_list_find_item(random_list, compare_item, compare_callback);
     if (found_item != NULL)
         print_list_callback(found_item->data, 0);
     else
         printf("No match.\n");
     // Index of item on list
-    int index_of_item = s_list_index_of(random_list, compare_item, compare_callback);
+    int index_of_item = c_structures_s_list_index_of(random_list, compare_item, compare_callback);
     printf("=Index of: %d\n", index_of_item);
     // For each item on list
     printf("=For each:\n");
-    s_list_for_each(random_list, weird_fizz_buzz);
+    c_structures_s_list_for_each(random_list, weird_fizz_buzz);
 
     // Free allocated space
-    s_list_free(random_list, random_free_callback);
+    c_structures_s_list_free(random_list, random_free_callback);
 
     return 0;
 }

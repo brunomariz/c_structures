@@ -21,14 +21,14 @@ typedef struct S_list
     S_list_item *tail;
 } S_list;
 
-S_list *s_list_create();
-void s_list_free(S_list *list, void callback(void *data));
-void s_list_append(S_list *list, void *data);
-void s_list_print(S_list *list, void callback(void *data, int iter));
-S_list_item *s_list_get_item(S_list *list, int index);
-S_list_item *s_list_find_item(S_list *list, void *data, int callback(void *data1, void *data2));
-int s_list_index_of(S_list *list, void *data, int callback(void *data1, void *data2));
-void s_list_for_each(S_list *list, void callback(void *data, int index));
+S_list *c_structures_s_list_create();
+void c_structures_s_list_free(S_list *list, void callback(void *data));
+void c_structures_s_list_append(S_list *list, void *data);
+void c_structures_s_list_print(S_list *list, void callback(void *data, int iter));
+S_list_item *c_structures_s_list_get_item(S_list *list, int index);
+S_list_item *c_structures_s_list_find_item(S_list *list, void *data, int callback(void *data1, void *data2));
+int c_structures_s_list_index_of(S_list *list, void *data, int callback(void *data1, void *data2));
+void c_structures_s_list_for_each(S_list *list, void callback(void *data, int index));
 
 // === Dynamic Array ===
 typedef struct
