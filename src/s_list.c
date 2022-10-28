@@ -7,16 +7,16 @@
 #include <stdlib.h>
 #include <math.h>
 
-CSSList *c_structures_s_list_create()
+CS_SList *c_structures_s_list_create()
 {
-    CSSList *list = (CSSList *)malloc(sizeof(*list));
+    CS_SList *list = (CS_SList *)malloc(sizeof(*list));
     list->length = 0;
     list->head = NULL;
     list->tail = NULL;
     return list;
 }
 
-void c_structures_s_list_free(CSSList *list, void callback(void *data))
+void c_structures_s_list_free(CS_SList *list, void callback(void *data))
 {
     /// @brief Iterates through items on list, and passes data to a
     ///                 callback that should handle freeing the memory, then
@@ -26,8 +26,8 @@ void c_structures_s_list_free(CSSList *list, void callback(void *data))
     /// @param callback Function that should handle freeing memory
     ///                 from each of the lists items data.
 
-    CSSListItem *item = list->head;
-    CSSListItem *next_item = NULL;
+    CS_SListItem *item = list->head;
+    CS_SListItem *next_item = NULL;
     for (int i = 0; i < list->length; i++)
     {
         next_item = item->next;
@@ -38,9 +38,9 @@ void c_structures_s_list_free(CSSList *list, void callback(void *data))
     free(list);
 }
 
-void c_structures_s_list_append(CSSList *list, void *data)
+void c_structures_s_list_append(CS_SList *list, void *data)
 {
-    CSSListItem *new_item = (CSSListItem *)malloc(sizeof(*new_item));
+    CS_SListItem *new_item = (CS_SListItem *)malloc(sizeof(*new_item));
     new_item->data = data;
     new_item->next = NULL;
 
@@ -57,13 +57,13 @@ void c_structures_s_list_append(CSSList *list, void *data)
     list->length++;
 }
 
-void c_structures_s_list_print(CSSList *list, void callback(void *data, int iter))
+void c_structures_s_list_print(CS_SList *list, void callback(void *data, int iter))
 {
     /// @brief Print function for simple linked lists
     /// @param list to print
     /// @param callback custom function for printing each list item. The print_s_list function iterates through each item on the list and calls the callback function passing the items data and the iteration number as arguments
 
-    CSSListItem *curr = list->head;
+    CS_SListItem *curr = list->head;
     for (int i = 0; i < list->length; i++)
     {
         callback(curr->data, i);
@@ -71,7 +71,7 @@ void c_structures_s_list_print(CSSList *list, void callback(void *data, int iter
     }
 }
 
-CSSListItem *c_structures_s_list_get_item(CSSList *list, int index)
+CS_SListItem *c_structures_s_list_get_item(CS_SList *list, int index)
 {
     /// @brief Get item from lisit at specified index (starts at 0)
     /// @param list to look through for item
@@ -80,7 +80,7 @@ CSSListItem *c_structures_s_list_get_item(CSSList *list, int index)
 
     if (list->length > index)
     {
-        CSSListItem *item = list->head;
+        CS_SListItem *item = list->head;
         for (int i = 0; i < index; i++)
         {
             item = item->next;
@@ -95,7 +95,7 @@ CSSListItem *c_structures_s_list_get_item(CSSList *list, int index)
     return NULL;
 }
 
-CSSListItem *c_structures_s_list_find_item(CSSList *list, void *data, int callback(void *data1, void *data2))
+CS_SListItem *c_structures_s_list_find_item(CS_SList *list, void *data, int callback(void *data1, void *data2))
 {
     /// @brief Find and item on a list.
     /// @param list to search for item.
@@ -104,7 +104,7 @@ CSSListItem *c_structures_s_list_find_item(CSSList *list, void *data, int callba
     ///                 a match and returns 0 otherwise.
     /// @return Item that matches according to callback function.
 
-    CSSListItem *curr = list->head;
+    CS_SListItem *curr = list->head;
     for (int i = 0; i < list->length; i++)
     {
         if (callback(data, curr->data))
@@ -116,7 +116,7 @@ CSSListItem *c_structures_s_list_find_item(CSSList *list, void *data, int callba
     return NULL;
 }
 
-int c_structures_s_list_index_of(CSSList *list, void *data, int callback(void *data1, void *data2))
+int c_structures_s_list_index_of(CS_SList *list, void *data, int callback(void *data1, void *data2))
 {
     /// @brief Find the index of an item on the list.
     /// @param list to look for item.
@@ -125,7 +125,7 @@ int c_structures_s_list_index_of(CSSList *list, void *data, int callback(void *d
     ///                 a match and returns 0 otherwise.
     /// @return index of item or -1 if no match found.
 
-    CSSListItem *curr = list->head;
+    CS_SListItem *curr = list->head;
     for (int i = 0; i < list->length; i++)
     {
         if (callback(data, curr->data))
@@ -137,25 +137,12 @@ int c_structures_s_list_index_of(CSSList *list, void *data, int callback(void *d
     return -1;
 }
 
-void c_structures_s_list_for_each(CSSList *list, void callback(void *data, int index))
+void c_structures_s_list_for_each(CS_SList *list, void callback(void *data, int index))
 {
-    CSSListItem *item = list->head;
+    CS_SListItem *item = list->head;
     for (int i = 0; i < list->length; i++)
     {
         callback(item->data, i);
         item = item->next;
     }
 }
-
-// int *c_structures_s_list_to_int_1_2_array(CSSList *list)
-// {
-//     int *array = malloc(sizeof(int) * list->length * 2);
-//     CSSListItem *item = list->head;
-//     for (int i = 0; i < list->length; i++)
-//     {
-//         array[i * 2 + 0] = ((int *)item->data)[0];
-//         array[i * 2 + 1] = ((int *)item->data)[1];
-//         item = item->next;
-//     }
-//     return array;
-// }
