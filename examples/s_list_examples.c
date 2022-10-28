@@ -154,6 +154,10 @@ int main(int argc, char *argv[])
     // For each item on list
     printf("=For each:\n");
     c_structures_s_list_for_each(random_list, weird_fizz_buzz);
+    // Remove item from list
+    printf("=Remove item 3:\n");
+    c_structures_s_list_remove(random_list, 3);
+    c_structures_s_list_print(random_list, print_list_callback);
 
     // Free allocated space
     c_structures_s_list_free(random_list, random_free_callback);

@@ -26,6 +26,7 @@ typedef struct s_list
 CS_SList *c_structures_s_list_create();
 void c_structures_s_list_free(CS_SList *list, void callback(void *data));
 void c_structures_s_list_append(CS_SList *list, void *data);
+void c_structures_s_list_remove(CS_SList *list, int index);
 void c_structures_s_list_print(CS_SList *list, void callback(void *data, int iter));
 CS_SListItem *c_structures_s_list_get_item(CS_SList *list, int index);
 CS_SListItem *c_structures_s_list_find_item(CS_SList *list, void *data, int callback(void *data1, void *data2));

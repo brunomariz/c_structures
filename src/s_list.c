@@ -57,6 +57,23 @@ void c_structures_s_list_append(CS_SList *list, void *data)
     list->length++;
 }
 
+void c_structures_s_list_remove(CS_SList *list, int index)
+{
+    if (index < list->length)
+    {
+        // Get item before the one that should be removed
+        CS_SListItem *preceding_item = list->head;
+        for (size_t i = 0; i < index - 1; i++)
+        {
+            preceding_item = preceding_item->next;
+        }
+        CS_SListItem *remove_item = preceding_item->next;
+        preceding_item->next = remove_item->next;
+        list->length--;
+        free(remove_item);
+    }
+}
+
 void c_structures_s_list_print(CS_SList *list, void callback(void *data, int iter))
 {
     /// @brief Print function for simple linked lists
