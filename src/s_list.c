@@ -59,18 +59,29 @@ void c_structures_s_list_append(CS_SList *list, void *data)
 
 void c_structures_s_list_remove(CS_SList *list, int index)
 {
-    if (index < list->length)
+    if ((index < list->length) && (index >= 0))
     {
-        // Get item before the one that should be removed
-        CS_SListItem *preceding_item = list->head;
-        for (size_t i = 0; i < index - 1; i++)
+        if (index > 0)
         {
-            preceding_item = preceding_item->next;
+            // Get item before the one that should be removed
+            CS_SListItem *preceding_item = list->head;
+            for (size_t i = 0; i < index - 1; i++)
+            {
+                preceding_item = preceding_item->next;
+            }
+            CS_SListItem *remove_item = preceding_item->next;
+            preceding_item->next = remove_item->next;
+            free(remove_item);
         }
-        CS_SListItem *remove_item = preceding_item->next;
-        preceding_item->next = remove_item->next;
+        else
+        {
+            // Save list head
+            CS_SListItem *previous_head = list->head;
+            // Update head
+            list->head = list->head->next;
+            free(previous_head);
+        }
         list->length--;
-        free(remove_item);
     }
 }
 

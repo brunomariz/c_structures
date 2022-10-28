@@ -155,8 +155,14 @@ int main(int argc, char *argv[])
     printf("=For each:\n");
     c_structures_s_list_for_each(random_list, weird_fizz_buzz);
     // Remove item from list
-    printf("=Remove item 3:\n");
-    c_structures_s_list_remove(random_list, 3);
+    printf("=Remove last item:\n");
+    c_structures_s_list_remove(random_list, random_list->length - 1);
+    c_structures_s_list_print(random_list, print_list_callback);
+    printf("=Remove first item:\n");
+    c_structures_s_list_remove(random_list, 0);
+    c_structures_s_list_print(random_list, print_list_callback);
+    printf("=Remove third item:\n");
+    c_structures_s_list_remove(random_list, 2);
     c_structures_s_list_print(random_list, print_list_callback);
 
     // Free allocated space
