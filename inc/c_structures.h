@@ -33,15 +33,22 @@ CS_SListItem *c_structures_s_list_find_item(CS_SList *list, void *data, int call
 int c_structures_s_list_index_of(CS_SList *list, void *data, int callback(void *data1, void *data2));
 void c_structures_s_list_for_each(CS_SList *list, void callback(void *data, int index));
 
-// === Dynamic Array ===
+// === Tree ===
 typedef struct
 {
-    uint length;
-    uint allocated_data_space;
-    int data[];
-} CS_DIntArray;
+    int id;
+    CS_SList *children;
+} CS_TreeNode;
 
-CS_DIntArray *c_structures_d_int_array_create();
-void c_structures_d_int_array_append(CS_DIntArray *array, int value);
+typedef struct
+{
+    CS_SList *root_nodes;
+} CS_Tree;
+
+CS_Tree *c_structures_tree_create();
+void c_structures_tree_add_root_node(CS_Tree *tree, CS_TreeNode *node);
+CS_TreeNode *c_structures_tree_node_create(int id);
+void c_structures_tree_node_add_child(CS_TreeNode *parent, CS_TreeNode *child);
+void c_structures_tree_print(CS_Tree *tree);
 
 #endif

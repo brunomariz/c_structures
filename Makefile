@@ -12,7 +12,7 @@ HDRS := inc/c_structures.h
 # define main file
 MAIN := examples/s_list_examples.c
 # add source files here
-SRCS := $(MAIN) src/s_list.c src/d_array.c
+SRCS := $(MAIN) src/s_list.c src/tree.c
 
 # generate names of object files
 OBJS := $(SRCS:.c=.o)
