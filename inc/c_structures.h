@@ -49,6 +49,7 @@ CS_Tree *c_structures_tree_create();
 void c_structures_tree_add_root_node(CS_Tree *tree, CS_TreeNode *node);
 CS_TreeNode *c_structures_tree_node_create(int id);
 void c_structures_tree_node_add_child(CS_TreeNode *parent, CS_TreeNode *child);
+void c_structures_tree_node_remove_child(CS_TreeNode *parent, int child_id);
 void c_structures_tree_print(CS_Tree *tree);
 
 #endif

@@ -33,6 +33,11 @@ int main(int argc, char *argv[])
     // Print the tree
     printf("==New Tree:\n");
     c_structures_tree_print(tree);
+    // Remove child from node 3
+    c_structures_tree_node_remove_child(node3, 4);
+    // Print the tree
+    printf("==New Tree:\n");
+    c_structures_tree_print(tree);
 
     /// ===Example 2 - Multitree===
     CS_Tree *multitree = c_structures_tree_create();

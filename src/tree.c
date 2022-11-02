@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
+int c_structures_tree_node_compare_callback(void *data1, void *data2);
 void c_structures_tree_print_list_callback(void *data, int iter);
 
 CS_Tree *c_structures_tree_create()
@@ -37,6 +38,26 @@ void c_structures_tree_node_add_child(CS_TreeNode *parent, CS_TreeNode *child)
         parent->children = c_structures_s_list_create();
     }
     c_structures_s_list_append(parent->children, child);
+}
+
+void c_structures_tree_node_remove_child(CS_TreeNode *parent, int child_id)
+{
+    CS_TreeNode *compare_node = c_structures_tree_node_create(child_id);
+    int index = c_structures_s_list_index_of(parent->children,
+                                             compare_node,
+                                             c_structures_tree_node_compare_callback);
+    c_structures_s_list_remove(parent->children, index);
+}
+
+int c_structures_tree_node_compare_callback(void *data1, void *data2)
+{
+    CS_TreeNode *node1 = data1;
+    CS_TreeNode *node2 = data2;
+    if (node1->id == node2->id)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 void c_structures_tree_print(CS_Tree *tree)
