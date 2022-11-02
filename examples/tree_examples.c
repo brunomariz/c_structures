@@ -31,12 +31,12 @@ int main(int argc, char *argv[])
     c_structures_tree_node_add_child(node2, node5);
     c_structures_tree_node_add_child(node3, node5);
     // Print the tree
-    printf("==New Tree:\n");
+    printf("==Add children:\n");
     c_structures_tree_print(tree);
     // Remove child from node 3
     c_structures_tree_node_remove_child(node3, 4);
     // Print the tree
-    printf("==New Tree:\n");
+    printf("==Remove child:\n");
     c_structures_tree_print(tree);
 
     /// ===Example 2 - Multitree===
