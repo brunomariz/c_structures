@@ -71,15 +71,11 @@ void c_structures_s_list_remove(CS_SList *list, int index)
             }
             CS_SListItem *remove_item = preceding_item->next;
             preceding_item->next = remove_item->next;
-            free(remove_item);
         }
         else
         {
-            // Save list head
-            CS_SListItem *previous_head = list->head;
             // Update head
             list->head = list->head->next;
-            free(previous_head);
         }
         list->length--;
     }

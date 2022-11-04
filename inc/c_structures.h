@@ -52,4 +52,13 @@ void c_structures_tree_node_add_child(CS_TreeNode *parent, CS_TreeNode *child);
 void c_structures_tree_node_remove_child(CS_TreeNode *parent, int child_id);
 void c_structures_tree_print(CS_Tree *tree);
 
+// === Stack ===
+typedef CS_SList CS_Stack;
+typedef CS_SListItem CS_StackItem;
+
+CS_Stack *c_structures_stack_create();
+void c_structures_stack_push(CS_Stack *stack, void *data);
+CS_StackItem *c_structures_stack_pop(CS_Stack *stack);
+void c_structures_stack_print(CS_Stack *stack, void callback(void *data, int iter));
+
 #endif
