@@ -23,10 +23,11 @@ void c_structures_tree_add_root_node(CS_Tree *tree, CS_TreeNode *node)
     c_structures_s_list_append(tree->root_nodes, node);
 }
 
-CS_TreeNode *c_structures_tree_node_create(int id)
+CS_TreeNode *c_structures_tree_node_create(int id, void *data)
 {
     CS_TreeNode *node = malloc(sizeof *node);
     node->id = id;
+    node->data = data;
     node->children = c_structures_s_list_create();
     return node;
 }
@@ -42,7 +43,7 @@ void c_structures_tree_node_add_child(CS_TreeNode *parent, CS_TreeNode *child)
 
 void c_structures_tree_node_remove_child(CS_TreeNode *parent, int child_id)
 {
-    CS_TreeNode *compare_node = c_structures_tree_node_create(child_id);
+    CS_TreeNode *compare_node = c_structures_tree_node_create(child_id, NULL);
     int index = c_structures_s_list_index_of(parent->children,
                                              compare_node,
                                              c_structures_tree_node_compare_callback);
