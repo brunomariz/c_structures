@@ -16,6 +16,22 @@ CS_SList *c_structures_s_list_create()
     return list;
 }
 
+CS_SList *c_structures_s_list_copy(CS_SList *list)
+{
+    /// @brief Copies a list
+    /// @param list to copy
+    /// @return copy of list
+
+    CS_SList *copy_list = c_structures_s_list_create();
+    CS_SListItem *current_item = list->head;
+    for (size_t i = 0; i < list->length; i++)
+    {
+        c_structures_s_list_append(copy_list, current_item->data);
+        current_item = current_item->next;
+    }
+    return copy_list;
+}
+
 void c_structures_s_list_free(CS_SList *list, void callback(void *data))
 {
     /// @brief Iterates through items on list, and passes data to a
@@ -40,6 +56,10 @@ void c_structures_s_list_free(CS_SList *list, void callback(void *data))
 
 void c_structures_s_list_append(CS_SList *list, void *data)
 {
+    /// @brief Appends a new item to the end of a list
+    /// @param list to append item to
+    /// @param data of new item
+
     CS_SListItem *new_item = (CS_SListItem *)malloc(sizeof(*new_item));
     new_item->data = data;
     new_item->next = NULL;

@@ -165,6 +165,19 @@ int main(int argc, char *argv[])
     c_structures_s_list_remove(random_list, 2);
     c_structures_s_list_print(random_list, print_list_callback);
 
+    // Copy list
+    printf("=Copy list\n");
+    CS_SList *copy_random_list = c_structures_s_list_copy(random_list);
+    c_structures_s_list_print(copy_random_list, print_list_callback);
+    // Change data of item in list
+    printf("=Update copy list:\n");
+    int new_data[2] = {1000, 1000};
+    copy_random_list->head->next->next->next->data = new_data;
+    printf("New copy list:\n");
+    c_structures_s_list_print(copy_random_list, print_list_callback);
+    printf("Original list:\n");
+    c_structures_s_list_print(random_list, print_list_callback);
+
     // Free allocated space
     c_structures_s_list_free(random_list, random_free_callback);
 

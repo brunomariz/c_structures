@@ -10,7 +10,7 @@ CFLAGS := `sdl2-config --libs --cflags` -ggdb3 -O0 --std=c99 -Wall -lSDL2_image 
 HDRS := inc/c_structures.h 
 
 # define main file
-MAIN := examples/s_list_examples.c
+MAIN := examples/s_list_examples.c examples/stack_examples.c examples/tree_examples.c
 # add source files here
 SRCS := $(MAIN) src/s_list.c src/tree.c src/stack.c
 
